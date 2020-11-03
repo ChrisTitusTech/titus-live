@@ -73,7 +73,7 @@ cp $HOME/titus-live/chroot/boot/initrd.img-* \
     $HOME/titus-live/staging/live/initrd
 ```
 
-Make MBR Boot Menu
+### Make MBR Boot Menu
 
 ```
 cat <<'EOF' >$HOME/titus-live/staging/isolinux/isolinux.cfg
@@ -107,7 +107,7 @@ LABEL linux
 EOF
 ```
 
-Make UEFI Boot Menu
+### Make UEFI Boot Menu
 
 ```
 cat <<'EOF' >$HOME/titus-live/staging/boot/grub/grub.cfg
@@ -130,7 +130,7 @@ menuentry "Titus Live [EFI/GRUB] (nomodeset)" {
 EOF
 ```
 
-Grub Menu Loader
+### Grub Menu Loader
 
 ```
 cat <<'EOF' >$HOME/titus-live/tmp/grub-standalone.cfg
@@ -147,7 +147,7 @@ cp /usr/lib/syslinux/modules/bios/* "${HOME}/titus-live/staging/isolinux/"
 cp -r /usr/lib/grub/x86_64-efi/* "${HOME}/titus-live/staging/boot/grub/x86_64-efi/"
 ```
 
-Build Grub 
+### Build Grub 
 
 ```
 grub-mkstandalone \
@@ -158,7 +158,7 @@ grub-mkstandalone \
     "boot/grub/grub.cfg=$HOME/titus-live/tmp/grub-standalone.cfg"
 ```
 
-Boot IMG File
+### Boot IMG File
 
 ```
 cd $HOME/titus-live/staging/EFI/boot && \
@@ -168,7 +168,7 @@ cd $HOME/titus-live/staging/EFI/boot && \
     mcopy -vi efiboot.img $HOME/titus-live/tmp/bootx64.efi ::efi/boot/
 ```
 
-Create ISO File
+### Create ISO File
 
 ```
 xorriso \
@@ -192,6 +192,6 @@ xorriso \
     "${HOME}/titus-live/staging"
  ```
  
- #### Source Articles
+ ## Source Articles
  
  - https://willhaley.com/blog/custom-debian-live-environment/
